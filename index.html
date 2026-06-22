@@ -1,93 +1,145 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZUBIA INDUSTRIES | Premium Marble Solutions</title>
 
-<meta name="viewport" content="width=device-width, initial-scale-1.0">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+body{
+    background:linear-gradient(135deg,#0f0f0f,#1f1f1f);
+    color:white;
+    overflow:hidden;
+}
 
-<link rel="stylesheet" href="style45.css">
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
 
-<title>Solar System Explorer</title>
+h1{
+    font-size:4rem;
+    letter-spacing:5px;
+    text-shadow:0 0 20px rgba(255,255,255,0.4);
+}
+
+p{
+    margin-top:15px;
+    color:#cfcfcf;
+    font-size:1.2rem;
+}
+
+.marble-container{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.marble{
+    position:absolute;
+    border-radius:50%;
+    background:
+    radial-gradient(circle at 30% 30%,
+    #ffffff,
+    #d9d9d9,
+    #8a8a8a);
+    box-shadow:0 0 30px rgba(255,255,255,.3);
+}
+
+.btn{
+    margin-top:30px;
+    padding:14px 30px;
+    background:white;
+    color:black;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+</style>
 
 </head>
+<body>
 
-<body>>
+<div class="hero">
 
-<h1 class='logo'>
+    <h1>ZUBIA INDUSTRIES</h1>
 
-Solar explorer
+    <p>Premium Marble • Granite • Stone Solutions</p>
 
-<span>in only CSS</span>
+    <a href="https://wa.me/91+9413926247" class="btn">
+        Contact Us
+    </a>
 
-</h1>
-
-<input class='planet' id='pluto' type='radio" name='planet'>
-
-<label class='menu pluto' fors'pluto">
-
-<div class='preview'></div>
-
-<div class="info">
-
-<h2>>
-
-<div class='pip'></div>
-
-Pluto
-
-</h2>
-
-<h3>39.5 All</h3>
+    <div class="marble-container" id="marbles"></div>
 
 </div>
 
-</label>
+<script>
 
-<input class='planets' id='neptune' typew'radio" nomew'planet'>
+const container = document.getElementById("marbles");
 
-<label class='menu neptune for neptune'>
+for(let i=0;i<20;i++){
 
-<div class='preview'></div>
+    const marble = document.createElement("div");
+    marble.classList.add("marble");
 
-<div class="info">
+    const size = Math.random()*90+40;
 
-<<h2>
+    marble.style.width = size+"px";
+    marble.style.height = size+"px";
 
-<div class='pip'></div>
+    marble.style.left = Math.random()*100+"%";
+    marble.style.top = Math.random()*100+"%";
 
-Neptune
+    container.appendChild(marble);
 
-</h2>
+    animate(marble);
+}
 
-<h3>30.06 AU</h3>
+function animate(el){
 
-</div>
+    let x = parseFloat(el.style.left);
+    let y = parseFloat(el.style.top);
 
-</label>
+    let dx = (Math.random()*0.08)+0.02;
+    let dy = (Math.random()*0.08)+0.02;
 
-<input class='planet?' ide uranus' type='radio" name='planet'>
+    function move(){
 
-<label class='menu uranus" for'uranus'>
+        x += dx;
+        y += dy;
 
-<div class='preview'></div>
+        if(x>100 || x<0) dx*=-1;
+        if(y>100 || y<0) dy*=-1;
 
-<div class="info">
+        el.style.left = x+"%";
+        el.style.top = y+"%";
 
-<h2>>
+        requestAnimationFrame(move);
+    }
 
-<div class='pip'></div>
+    move();
+}
+</script>
 
-Uranus
-
-</h2>
-
-<h3>19.18 AU</h3>
-
-</div>
-
-</label>
+</body>
+</html>
