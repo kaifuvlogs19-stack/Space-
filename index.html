@@ -1088,5 +1088,9 @@ document.querySelectorAll('.mtrack').forEach(function(tr){
 document.querySelectorAll('.marr').forEach(function(b){b.onclick=function(){var tr=document.getElementById(b.dataset.t),w=tr.querySelector('.pc').offsetWidth+28;tr.scrollBy({left:b.classList.contains('l')?-w:w,behavior:'smooth'})}});
 })();
 </script>
+
+<!-- Supabase CMS: config.js must load before cms.js. -->
+<script src="assets/js/config.js"></script>
+<script src="assets/js/cms.js" defer></script>
 </body>
 </html>
